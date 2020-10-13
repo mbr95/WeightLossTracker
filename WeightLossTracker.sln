@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightLossTracker", "WeightLossTracker\WeightLossTracker.csproj", "{DE4B8670-847C-4DC4-96E8-915559B92ED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightLossTracker.Tests", "WeightLossTracker.Tests\WeightLossTracker.Tests.csproj", "{4299A027-AF69-40D2-A1AA-F279B6CF6C5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightLossTracker.Library", "WeightLossTracker.Library\WeightLossTracker.Library.csproj", "{DFFC65DA-B393-4F19-9644-5FFD96C00E82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE4B8670-847C-4DC4-96E8-915559B92ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4B8670-847C-4DC4-96E8-915559B92ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4B8670-847C-4DC4-96E8-915559B92ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4B8670-847C-4DC4-96E8-915559B92ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4299A027-AF69-40D2-A1AA-F279B6CF6C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4299A027-AF69-40D2-A1AA-F279B6CF6C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4299A027-AF69-40D2-A1AA-F279B6CF6C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4299A027-AF69-40D2-A1AA-F279B6CF6C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFC65DA-B393-4F19-9644-5FFD96C00E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFC65DA-B393-4F19-9644-5FFD96C00E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFC65DA-B393-4F19-9644-5FFD96C00E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFC65DA-B393-4F19-9644-5FFD96C00E82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DFDC7BA-26D9-471E-B876-CCEBF049B9F6}
+	EndGlobalSection
+EndGlobal
