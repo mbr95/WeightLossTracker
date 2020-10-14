@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WeightLossTracker.Library
 {
-    public class WeightRecord
+    public class Weight
     {
-        public double Weight { get; set; }
+        public double Value { get; set; }
         DateTime Date { get; set; }
     }
 }
