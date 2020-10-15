@@ -11,6 +11,13 @@ namespace WeightLossTracker.Library
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullInfo { 
+            get 
+            { 
+                return $"{FirstName} {LastName}"; 
+            } 
+        }
+
         public List<Weight> Weights { get; set; }
     }
 }

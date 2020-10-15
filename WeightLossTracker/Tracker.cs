@@ -16,5 +16,10 @@ namespace WeightLossTracker
         {
             InitializeComponent();
         }
+
+        private void AddUserBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
