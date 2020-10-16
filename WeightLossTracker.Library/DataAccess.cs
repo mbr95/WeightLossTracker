@@ -16,7 +16,9 @@ namespace WeightLossTracker.Library
         {
             using (IDbConnection connection = new SqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
-                return connection.Query<User>("select * from Users").ToList();
+                var usersQuery = connection.Query<User>("select * from Users");
+                var usersList = usersQuery.ToList();
+                return usersList;
             }
         }
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UsersList = new System.Windows.Forms.ListBox();
+            this.UsersListBox = new System.Windows.Forms.ListBox();
             this.AddUserBtn = new System.Windows.Forms.Button();
             this.AddUserBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -36,14 +36,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // UsersList
+            // UsersListBox
             // 
-            this.UsersList.FormattingEnabled = true;
-            this.UsersList.ItemHeight = 24;
-            this.UsersList.Location = new System.Drawing.Point(12, 12);
-            this.UsersList.Name = "UsersList";
-            this.UsersList.Size = new System.Drawing.Size(165, 220);
-            this.UsersList.TabIndex = 0;
+            this.UsersListBox.FormattingEnabled = true;
+            this.UsersListBox.ItemHeight = 24;
+            this.UsersListBox.Location = new System.Drawing.Point(12, 12);
+            this.UsersListBox.Name = "UsersListBox";
+            this.UsersListBox.Size = new System.Drawing.Size(165, 220);
+            this.UsersListBox.TabIndex = 0;
             // 
             // AddUserBtn
             // 
@@ -97,7 +97,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.AddUserBox);
             this.Controls.Add(this.AddUserBtn);
-            this.Controls.Add(this.UsersList);
+            this.Controls.Add(this.UsersListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Tracker";
@@ -109,7 +109,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox UsersList;
+        private System.Windows.Forms.ListBox UsersListBox;
         private System.Windows.Forms.Button AddUserBtn;
         private System.Windows.Forms.TextBox AddUserBox;
         private System.Windows.Forms.TextBox textBox1;
