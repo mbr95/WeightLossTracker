@@ -20,6 +20,11 @@ namespace WeightLossTracker
         {
             InitializeComponent();
 
+            UpdateUsersBox();
+        }
+
+        private void UpdateUsersBox() 
+        {
             users = dataBase.GetAllUsers();
             UsersListBox.DataSource = users;
             UsersListBox.DisplayMember = "FullInfo";
