@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using Npgsql;
 
 namespace WeightLossTracker.Library
 {
@@ -14,12 +15,14 @@ namespace WeightLossTracker.Library
     {
         public List<User> GetAllUsers()
         {
-            using (IDbConnection connection = new SqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
-                var usersQuery = connection.Query<User>("select * from Users");
+                var usersQuery = connection.Query<User>("select * from \"User\"");
                 var usersList = usersQuery.ToList();
                 return usersList;
             }
         }
+
+
     }
 }
