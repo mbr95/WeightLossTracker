@@ -23,7 +23,16 @@ namespace WeightLossTracker.Library
             }
         }
 
-        
+        public void AddUser(string firstName, string lastName)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+
+                User newUser = new User { FirstName = firstName, LastName = lastName };
+
+                connection.Execute($"insert into \"User\" (\"FirstName\", \"LastName\") values (\'{newUser.FirstName}\', \'{newUser.LastName}\')");
+            }
+        }
 
     }
 }

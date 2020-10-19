@@ -32,7 +32,7 @@ namespace WeightLossTracker
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
-
+            dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
         }
     }
 }

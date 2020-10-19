@@ -30,8 +30,8 @@
         {
             this.UsersListBox = new System.Windows.Forms.ListBox();
             this.AddUserBtn = new System.Windows.Forms.Button();
-            this.AddUserBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FirstNameBox = new System.Windows.Forms.TextBox();
+            this.LastNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -55,19 +55,19 @@
             this.AddUserBtn.UseVisualStyleBackColor = true;
             this.AddUserBtn.Click += new System.EventHandler(this.AddUserBtn_Click);
             // 
-            // AddUserBox
+            // FirstNameBox
             // 
-            this.AddUserBox.Location = new System.Drawing.Point(12, 273);
-            this.AddUserBox.Name = "AddUserBox";
-            this.AddUserBox.Size = new System.Drawing.Size(165, 29);
-            this.AddUserBox.TabIndex = 2;
+            this.FirstNameBox.Location = new System.Drawing.Point(12, 273);
+            this.FirstNameBox.Name = "FirstNameBox";
+            this.FirstNameBox.Size = new System.Drawing.Size(165, 29);
+            this.FirstNameBox.TabIndex = 2;
             // 
-            // textBox1
+            // LastNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 341);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 29);
-            this.textBox1.TabIndex = 3;
+            this.LastNameBox.Location = new System.Drawing.Point(12, 341);
+            this.LastNameBox.Name = "LastNameBox";
+            this.LastNameBox.Size = new System.Drawing.Size(165, 29);
+            this.LastNameBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -94,8 +94,8 @@
             this.ClientSize = new System.Drawing.Size(683, 427);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.AddUserBox);
+            this.Controls.Add(this.LastNameBox);
+            this.Controls.Add(this.FirstNameBox);
             this.Controls.Add(this.AddUserBtn);
             this.Controls.Add(this.UsersListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -111,8 +111,8 @@
 
         private System.Windows.Forms.ListBox UsersListBox;
         private System.Windows.Forms.Button AddUserBtn;
-        private System.Windows.Forms.TextBox AddUserBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FirstNameBox;
+        private System.Windows.Forms.TextBox LastNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
