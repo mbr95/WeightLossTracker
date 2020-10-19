@@ -23,16 +23,18 @@ namespace WeightLossTracker
             UpdateUsersBox();
         }
 
+        private void AddUserBtn_Click(object sender, EventArgs e)
+        {
+            dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
+
+            UpdateUsersBox();
+        }
+
         private void UpdateUsersBox() 
         {
             users = dataBase.GetAllUsers();
             UsersListBox.DataSource = users;
             UsersListBox.DisplayMember = "FullInfo";
-        }
-
-        private void AddUserBtn_Click(object sender, EventArgs e)
-        {
-            dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
         }
     }
 }

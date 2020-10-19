@@ -17,8 +17,11 @@ namespace WeightLossTracker.Library
         {
             using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
-                var usersQuery = connection.Query<User>("select * from \"User\"");
+                string getAllQuery = "select * from \"User\"";
+
+                var usersQuery = connection.Query<User>(getAllQuery);
                 var usersList = usersQuery.ToList();
+
                 return usersList;
             }
         }
@@ -27,10 +30,17 @@ namespace WeightLossTracker.Library
         {
             using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
+                connection.Open();
+                string addUserQuery = "insert into \"User\" (\"FirstName\", \"LastName\") values (@FirstName, @LastName)";
 
-                User newUser = new User { FirstName = firstName, LastName = lastName };
+                using (NpgsqlCommand command = new NpgsqlCommand(addUserQuery, (NpgsqlConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@FirstName", firstName);
+                    command.Parameters.AddWithValue("@LastName", lastName);
 
-                connection.Execute($"insert into \"User\" (\"FirstName\", \"LastName\") values (\'{newUser.FirstName}\', \'{newUser.LastName}\')");
+                    command.ExecuteReader();
+                }
+                connection.Close();    
             }
         }
 
