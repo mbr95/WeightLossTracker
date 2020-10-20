@@ -44,5 +44,25 @@ namespace WeightLossTracker.Library
             }
         }
 
+        public void AddWeight(float value, DateTime date, int userId)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+                connection.Open();
+                string addWeightQuery = "insert into \"Weight\" (\"Value\", \"Date\", \"UserId\") values (@Value, @Date, @UserId)";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(addWeightQuery, (NpgsqlConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@Value", value);
+                    command.Parameters.Add(new NpgsqlParameter("@Date", NpgsqlTypes.NpgsqlDbType.Date));
+                    command.Parameters[1].Value = date;
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    command.ExecuteReader();
+                }
+                connection.Close();
+            }
+        }
+
     }
 }

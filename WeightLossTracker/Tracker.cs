@@ -36,5 +36,17 @@ namespace WeightLossTracker
             UsersListBox.DataSource = users;
             UsersListBox.DisplayMember = "FullInfo";
         }
+
+        private void AddWeightBtn_Click(object sender, EventArgs e)
+        {
+            float value = float.Parse(WeightValueBox.Text);
+
+            DateTime date = DateTime.Now;
+
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            dataBase.AddWeight(value, date, userId);
+        }
     }
 }

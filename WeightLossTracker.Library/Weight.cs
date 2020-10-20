@@ -9,6 +9,6 @@ namespace WeightLossTracker.Library
     public class Weight
     {
         public double Value { get; set; }
-        DateTime Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

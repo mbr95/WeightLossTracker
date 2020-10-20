@@ -34,6 +34,9 @@
             this.LastNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.AddWeightBtn = new System.Windows.Forms.Button();
+            this.WeightValueBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UsersListBox
@@ -87,11 +90,40 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Last name";
             // 
+            // AddWeightBtn
+            // 
+            this.AddWeightBtn.Location = new System.Drawing.Point(220, 378);
+            this.AddWeightBtn.Name = "AddWeightBtn";
+            this.AddWeightBtn.Size = new System.Drawing.Size(160, 37);
+            this.AddWeightBtn.TabIndex = 6;
+            this.AddWeightBtn.Text = "Add Weight";
+            this.AddWeightBtn.UseVisualStyleBackColor = true;
+            this.AddWeightBtn.Click += new System.EventHandler(this.AddWeightBtn_Click);
+            // 
+            // WeightValueBox
+            // 
+            this.WeightValueBox.Location = new System.Drawing.Point(220, 341);
+            this.WeightValueBox.Name = "WeightValueBox";
+            this.WeightValueBox.Size = new System.Drawing.Size(160, 29);
+            this.WeightValueBox.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(226, 314);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Weight";
+            // 
             // Tracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 427);
+            this.ClientSize = new System.Drawing.Size(705, 427);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.WeightValueBox);
+            this.Controls.Add(this.AddWeightBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LastNameBox);
@@ -115,6 +147,9 @@
         private System.Windows.Forms.TextBox LastNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button AddWeightBtn;
+        private System.Windows.Forms.TextBox WeightValueBox;
+        private System.Windows.Forms.Label label3;
     }
 }
 
