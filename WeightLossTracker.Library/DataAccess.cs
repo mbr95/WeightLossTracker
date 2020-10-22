@@ -26,6 +26,20 @@ namespace WeightLossTracker.Library
             }
         }
 
+        public Weight GetWeightForDate(DateTime date, int userId)
+        {
+            using(IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+                connection.Open();
+                string getWeightForDateQuery = "select * from \"Weight\" where \"Date\" = @Date and \"UserId\" = @UserId";
+
+                var weightForDate = connection.QuerySingle<Weight>(getWeightForDateQuery, new { Date = date, UserId = userId });
+
+                connection.Close();
+                return weightForDate;
+            }
+        }
+
         public void AddUser(string firstName, string lastName)
         {
             using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))

@@ -48,5 +48,19 @@ namespace WeightLossTracker
 
             dataBase.AddWeight(value, date, userId);
         }
+
+        private void GetWeightButton_Click(object sender, EventArgs e)
+        {
+            DateTime date = datePicker.Value;
+
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            Weight weightForDate = dataBase.GetWeightForDate(date, userId);
+            List<Weight> weights = new List<Weight>();
+            weights.Add(weightForDate);
+            showWeightBox.DataSource = weights;
+            showWeightBox.DisplayMember = "Value" + "Date";
+        }
     }
 }
