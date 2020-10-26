@@ -37,6 +37,8 @@
             this.UpdateWeightBtn = new System.Windows.Forms.Button();
             this.WeightValueBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UsersListBox
@@ -110,17 +112,35 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 314);
+            this.label3.Location = new System.Drawing.Point(220, 314);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 24);
             this.label3.TabIndex = 8;
             this.label3.Text = "Weight";
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(220, 273);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(214, 29);
+            this.dateTimePicker.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(220, 246);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 24);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Date";
             // 
             // Tracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 427);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.WeightValueBox);
             this.Controls.Add(this.UpdateWeightBtn);
@@ -150,6 +170,8 @@
         private System.Windows.Forms.Button UpdateWeightBtn;
         private System.Windows.Forms.TextBox WeightValueBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label4;
     }
 }
 

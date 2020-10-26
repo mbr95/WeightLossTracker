@@ -41,7 +41,7 @@ namespace WeightLossTracker
         {
             float value = float.Parse(WeightValueBox.Text);
 
-            DateTime date = DateTime.Now;
+            DateTime date = dateTimePicker.Value;
 
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;

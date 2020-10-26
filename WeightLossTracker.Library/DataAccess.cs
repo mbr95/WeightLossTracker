@@ -34,7 +34,6 @@ namespace WeightLossTracker.Library
                 connection.Open();
                 string checkIfDateExistsQuery = "select * from \"Weight\" where \"Date\" = @Date and \"UserId\" = @UserId";
 
-                //bool dateExists = connection.ExecuteScalar<bool>(checkIfDateExistsQuery, new { Date = date, UserId = userId });
                 using (NpgsqlCommand command = new NpgsqlCommand(checkIfDateExistsQuery, (NpgsqlConnection)connection))
                 {
                     command.Parameters.Add(new NpgsqlParameter("@Date", NpgsqlTypes.NpgsqlDbType.Date));
