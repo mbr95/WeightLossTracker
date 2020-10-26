@@ -37,7 +37,7 @@ namespace WeightLossTracker
             UsersListBox.DisplayMember = "FullInfo";
         }
 
-        private void AddWeightBtn_Click(object sender, EventArgs e)
+        private void UpdateWeightBtn_Click(object sender, EventArgs e)
         {
             float value = float.Parse(WeightValueBox.Text);
 
@@ -46,21 +46,18 @@ namespace WeightLossTracker
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;
 
-            dataBase.AddWeight(value, date, userId);
+            if(dataBase.DateExists(date, userId))
+            {
+                dataBase.UpdateWeight(value, date, userId);
+            } 
+            else
+            {
+                dataBase.AddWeight(value, date, userId);
+            }
+
         }
 
-        private void GetWeightButton_Click(object sender, EventArgs e)
-        {
-            DateTime date = datePicker.Value;
 
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
 
-            Weight weightForDate = dataBase.GetWeightForDate(date, userId);
-            List<Weight> weights = new List<Weight>();
-            weights.Add(weightForDate);
-            showWeightBox.DataSource = weights;
-            showWeightBox.DisplayMember = "Value" + "Date";
-        }
     }
 }

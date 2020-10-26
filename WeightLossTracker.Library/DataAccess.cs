@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Npgsql;
+using Npgsql.TypeMapping;
 
 namespace WeightLossTracker.Library
 {
@@ -26,17 +27,27 @@ namespace WeightLossTracker.Library
             }
         }
 
-        public Weight GetWeightForDate(DateTime date, int userId)
+        public bool DateExists(DateTime date, int userId)
         {
             using(IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
                 connection.Open();
-                string getWeightForDateQuery = "select * from \"Weight\" where \"Date\" = @Date and \"UserId\" = @UserId";
+                string checkIfDateExistsQuery = "select * from \"Weight\" where \"Date\" = @Date and \"UserId\" = @UserId";
 
-                var weightForDate = connection.QuerySingle<Weight>(getWeightForDateQuery, new { Date = date, UserId = userId });
+                //bool dateExists = connection.ExecuteScalar<bool>(checkIfDateExistsQuery, new { Date = date, UserId = userId });
+                using (NpgsqlCommand command = new NpgsqlCommand(checkIfDateExistsQuery, (NpgsqlConnection)connection))
+                {
+                    command.Parameters.Add(new NpgsqlParameter("@Date", NpgsqlTypes.NpgsqlDbType.Date));
+                    command.Parameters[0].Value = date;
+                    command.Parameters.AddWithValue("@UserId", userId);
 
-                connection.Close();
-                return weightForDate;
+                    var dataReader = command.ExecuteReader();
+                    bool dateExist = dataReader.HasRows;
+                    connection.Close();
+
+                    return dateExist;
+                }
+
             }
         }
 

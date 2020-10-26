@@ -34,12 +34,9 @@
             this.LastNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.AddWeightBtn = new System.Windows.Forms.Button();
+            this.UpdateWeightBtn = new System.Windows.Forms.Button();
             this.WeightValueBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.GetWeightButton = new System.Windows.Forms.Button();
-            this.showWeightBox = new System.Windows.Forms.ListBox();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // UsersListBox
@@ -93,15 +90,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Last name";
             // 
-            // AddWeightBtn
+            // UpdateWeightBtn
             // 
-            this.AddWeightBtn.Location = new System.Drawing.Point(220, 378);
-            this.AddWeightBtn.Name = "AddWeightBtn";
-            this.AddWeightBtn.Size = new System.Drawing.Size(160, 37);
-            this.AddWeightBtn.TabIndex = 6;
-            this.AddWeightBtn.Text = "Add Weight";
-            this.AddWeightBtn.UseVisualStyleBackColor = true;
-            this.AddWeightBtn.Click += new System.EventHandler(this.AddWeightBtn_Click);
+            this.UpdateWeightBtn.Location = new System.Drawing.Point(220, 378);
+            this.UpdateWeightBtn.Name = "UpdateWeightBtn";
+            this.UpdateWeightBtn.Size = new System.Drawing.Size(160, 37);
+            this.UpdateWeightBtn.TabIndex = 6;
+            this.UpdateWeightBtn.Text = "Update Weight";
+            this.UpdateWeightBtn.UseVisualStyleBackColor = true;
+            this.UpdateWeightBtn.Click += new System.EventHandler(this.UpdateWeightBtn_Click);
             // 
             // WeightValueBox
             // 
@@ -119,43 +116,14 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Weight";
             // 
-            // GetWeightButton
-            // 
-            this.GetWeightButton.Location = new System.Drawing.Point(493, 382);
-            this.GetWeightButton.Name = "GetWeightButton";
-            this.GetWeightButton.Size = new System.Drawing.Size(120, 33);
-            this.GetWeightButton.TabIndex = 9;
-            this.GetWeightButton.Text = "GetWeight";
-            this.GetWeightButton.UseVisualStyleBackColor = true;
-            this.GetWeightButton.Click += new System.EventHandler(this.GetWeightButton_Click);
-            // 
-            // showWeightBox
-            // 
-            this.showWeightBox.FormattingEnabled = true;
-            this.showWeightBox.ItemHeight = 24;
-            this.showWeightBox.Location = new System.Drawing.Point(493, 174);
-            this.showWeightBox.Name = "showWeightBox";
-            this.showWeightBox.Size = new System.Drawing.Size(200, 148);
-            this.showWeightBox.TabIndex = 10;
-            // 
-            // datePicker
-            // 
-            this.datePicker.Location = new System.Drawing.Point(493, 340);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(200, 29);
-            this.datePicker.TabIndex = 11;
-            // 
             // Tracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 427);
-            this.Controls.Add(this.datePicker);
-            this.Controls.Add(this.showWeightBox);
-            this.Controls.Add(this.GetWeightButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.WeightValueBox);
-            this.Controls.Add(this.AddWeightBtn);
+            this.Controls.Add(this.UpdateWeightBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LastNameBox);
@@ -179,12 +147,9 @@
         private System.Windows.Forms.TextBox LastNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button AddWeightBtn;
+        private System.Windows.Forms.Button UpdateWeightBtn;
         private System.Windows.Forms.TextBox WeightValueBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button GetWeightButton;
-        private System.Windows.Forms.ListBox showWeightBox;
-        private System.Windows.Forms.DateTimePicker datePicker;
     }
 }
 
