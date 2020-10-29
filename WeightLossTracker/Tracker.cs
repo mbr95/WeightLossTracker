@@ -57,7 +57,22 @@ namespace WeightLossTracker
 
         }
 
+        private void DeleteWeightBtn_Click(object sender, EventArgs e)
+        {
+            DateTime date = dateTimePicker.Value;
 
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
 
+            dataBase.DeleteWeight(date, userId);
+        }
+
+        private void DeleteUserBtn_Click(object sender, EventArgs e)
+        {
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            dataBase.DeleteUser(userId);
+        }
     }
 }

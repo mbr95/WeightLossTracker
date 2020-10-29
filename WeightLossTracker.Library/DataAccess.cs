@@ -107,5 +107,41 @@ namespace WeightLossTracker.Library
                 connection.Close();
             }
         }
+
+        public void DeleteUser(int id)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+                connection.Open();
+                string addUserQuery = "delete from \"User\" where \"Id\" = @Id";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(addUserQuery, (NpgsqlConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    command.ExecuteReader();
+                }
+                connection.Close();
+            }
+        }
+
+        public void DeleteWeight(DateTime date, int userId)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+                connection.Open();
+                string UpdateWeightQuery = "delete from \"Weight\" where \"UserId\" = @UserId and \"Date\" = @Date";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(UpdateWeightQuery, (NpgsqlConnection)connection))
+                {
+                    command.Parameters.Add(new NpgsqlParameter("@Date", NpgsqlTypes.NpgsqlDbType.Date));
+                    command.Parameters[0].Value = date;
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    command.ExecuteReader();
+                }
+                connection.Close();
+            }
+        }
     }
 }
