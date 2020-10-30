@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using WeightLossTracker.Library;
 
 namespace WeightLossTracker
@@ -21,6 +22,7 @@ namespace WeightLossTracker
             InitializeComponent();
 
             UpdateUsersBox();
+            UpdateWeightChart();
         }
 
         private void AddUserBtn_Click(object sender, EventArgs e)
@@ -30,12 +32,7 @@ namespace WeightLossTracker
             UpdateUsersBox();
         }
 
-        private void UpdateUsersBox() 
-        {
-            users = dataBase.GetAllUsers();
-            UsersListBox.DataSource = users;
-            UsersListBox.DisplayMember = "FullInfo";
-        }
+        
 
         private void UpdateWeightBtn_Click(object sender, EventArgs e)
         {
@@ -55,6 +52,7 @@ namespace WeightLossTracker
                 dataBase.AddWeight(value, date, userId);
             }
 
+            UpdateWeightChart();
         }
 
         private void DeleteWeightBtn_Click(object sender, EventArgs e)
@@ -65,6 +63,7 @@ namespace WeightLossTracker
             int userId = selectedUser.Id;
 
             dataBase.DeleteWeight(date, userId);
+            UpdateWeightChart();
         }
 
         private void DeleteUserBtn_Click(object sender, EventArgs e)
@@ -73,6 +72,42 @@ namespace WeightLossTracker
             int userId = selectedUser.Id;
 
             dataBase.DeleteUser(userId);
+            UpdateUsersBox();
+        }
+
+        private void UpdateUsersBox() 
+        {
+            users = dataBase.GetAllUsers();
+            UsersListBox.DataSource = users;
+            UsersListBox.DisplayMember = "FullInfo";
+        }
+
+        private void UpdateWeightChart()
+        {
+            WeightChart.Series.Clear();
+            WeightChart.Series.Add("Weight");
+            WeightChart.Series["Weight"].ChartType = SeriesChartType.Point;
+
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            List<Weight> weights = dataBase.GetAllWeights(userId);
+            List<Weight> weightsOrderedByValue = weights.OrderBy(e => e.Value).ToList();
+            int minWeight = (int)weightsOrderedByValue.First().Value - 1;
+            int maxWeight = (int)weightsOrderedByValue.Last().Value + 1;
+
+            WeightChart.ChartAreas[0].AxisY.Minimum = minWeight;
+            WeightChart.ChartAreas[0].AxisY.Maximum = maxWeight;
+
+            foreach (Weight weight in weights)
+            {
+                WeightChart.Series["Weight"].Points.AddXY(weight.Date, weight.Value);
+            }
+        }
+
+        private void UsersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateWeightChart();
         }
     }
 }

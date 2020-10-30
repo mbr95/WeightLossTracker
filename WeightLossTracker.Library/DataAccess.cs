@@ -18,12 +18,25 @@ namespace WeightLossTracker.Library
         {
             using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
             {
-                string getAllQuery = "select * from \"User\"";
+                string getAllUsersQuery = "select * from \"User\"";
 
-                var usersQuery = connection.Query<User>(getAllQuery);
+                var usersQuery = connection.Query<User>(getAllUsersQuery);
                 var usersList = usersQuery.ToList();
 
                 return usersList;
+            }
+        }
+
+        public List<Weight> GetAllWeights(int userId)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(Helper.ConnectionValidation("WeightLossDB")))
+            {
+                string getAllWeightsQuery = "select * from \"Weight\" where \"UserId\" = @UserId";
+
+                var weightsQuery = connection.Query<Weight>(getAllWeightsQuery, new { UserId = userId });
+                var weightsList = weightsQuery.ToList();
+
+                return weightsList;
             }
         }
 
