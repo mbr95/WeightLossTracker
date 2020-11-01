@@ -96,11 +96,18 @@ namespace WeightLossTracker
 
             List<Weight> weights = _dataBase.GetAllWeights(userId);
             List<Weight> weightsOrderedByValue = weights.OrderBy(e => e.Value).ToList();
+            List<Weight> weightsOrderedByDate = weights.OrderBy(e => e.Date).ToList();
+
             int minWeight = (int)weightsOrderedByValue.First().Value - 1;
             int maxWeight = (int)weightsOrderedByValue.Last().Value + 1;
+            DateTime minDate = weightsOrderedByDate.First().Date.AddDays(-2);
+            DateTime maxDate = weightsOrderedByDate.Last().Date.AddDays(2);
 
+            WeightChart.Series[0].XValueType = ChartValueType.Date;
             WeightChart.ChartAreas[0].AxisY.Minimum = minWeight;
             WeightChart.ChartAreas[0].AxisY.Maximum = maxWeight;
+            WeightChart.ChartAreas[0].AxisX.Minimum = minDate.ToOADate();
+            WeightChart.ChartAreas[0].AxisX.Maximum = maxDate.ToOADate();
 
             foreach (Weight weight in weights)
             {

@@ -54,13 +54,13 @@
             this.UsersListBox.ItemHeight = 24;
             this.UsersListBox.Location = new System.Drawing.Point(12, 12);
             this.UsersListBox.Name = "UsersListBox";
-            this.UsersListBox.Size = new System.Drawing.Size(165, 220);
+            this.UsersListBox.Size = new System.Drawing.Size(165, 244);
             this.UsersListBox.TabIndex = 0;
             this.UsersListBox.SelectedIndexChanged += new System.EventHandler(this.UsersListBox_SelectedIndexChanged);
             // 
             // AddUserBtn
             // 
-            this.AddUserBtn.Location = new System.Drawing.Point(12, 378);
+            this.AddUserBtn.Location = new System.Drawing.Point(12, 408);
             this.AddUserBtn.Name = "AddUserBtn";
             this.AddUserBtn.Size = new System.Drawing.Size(165, 37);
             this.AddUserBtn.TabIndex = 1;
@@ -70,14 +70,14 @@
             // 
             // FirstNameBox
             // 
-            this.FirstNameBox.Location = new System.Drawing.Point(12, 273);
+            this.FirstNameBox.Location = new System.Drawing.Point(12, 295);
             this.FirstNameBox.Name = "FirstNameBox";
             this.FirstNameBox.Size = new System.Drawing.Size(165, 29);
             this.FirstNameBox.TabIndex = 2;
             // 
             // LastNameBox
             // 
-            this.LastNameBox.Location = new System.Drawing.Point(12, 341);
+            this.LastNameBox.Location = new System.Drawing.Point(12, 359);
             this.LastNameBox.Name = "LastNameBox";
             this.LastNameBox.Size = new System.Drawing.Size(165, 29);
             this.LastNameBox.TabIndex = 3;
@@ -85,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 246);
+            this.label1.Location = new System.Drawing.Point(13, 268);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 24);
             this.label1.TabIndex = 4;
@@ -94,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 314);
+            this.label2.Location = new System.Drawing.Point(13, 327);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 24);
             this.label2.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             // UpdateWeightBtn
             // 
-            this.UpdateWeightBtn.Location = new System.Drawing.Point(220, 314);
+            this.UpdateWeightBtn.Location = new System.Drawing.Point(220, 408);
             this.UpdateWeightBtn.Name = "UpdateWeightBtn";
             this.UpdateWeightBtn.Size = new System.Drawing.Size(160, 37);
             this.UpdateWeightBtn.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // WeightValueBox
             // 
-            this.WeightValueBox.Location = new System.Drawing.Point(220, 274);
+            this.WeightValueBox.Location = new System.Drawing.Point(220, 359);
             this.WeightValueBox.Name = "WeightValueBox";
             this.WeightValueBox.Size = new System.Drawing.Size(160, 29);
             this.WeightValueBox.TabIndex = 7;
@@ -120,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 246);
+            this.label3.Location = new System.Drawing.Point(226, 327);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 24);
             this.label3.TabIndex = 8;
@@ -128,7 +128,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(442, 273);
+            this.dateTimePicker.Location = new System.Drawing.Point(428, 358);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(214, 29);
             this.dateTimePicker.TabIndex = 9;
@@ -136,7 +136,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(438, 246);
+            this.label4.Location = new System.Drawing.Point(434, 327);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 24);
             this.label4.TabIndex = 10;
@@ -155,14 +155,14 @@
             series1.Legend = "Legend1";
             series1.Name = "Weight";
             this.WeightChart.Series.Add(series1);
-            this.WeightChart.Size = new System.Drawing.Size(449, 220);
+            this.WeightChart.Size = new System.Drawing.Size(561, 312);
             this.WeightChart.TabIndex = 11;
             // 
             // DeleteWeightBtn
             // 
-            this.DeleteWeightBtn.Location = new System.Drawing.Point(442, 314);
+            this.DeleteWeightBtn.Location = new System.Drawing.Point(220, 460);
             this.DeleteWeightBtn.Name = "DeleteWeightBtn";
-            this.DeleteWeightBtn.Size = new System.Drawing.Size(214, 37);
+            this.DeleteWeightBtn.Size = new System.Drawing.Size(160, 37);
             this.DeleteWeightBtn.TabIndex = 12;
             this.DeleteWeightBtn.Text = "Delete Weight";
             this.DeleteWeightBtn.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             // 
             // DeleteUserBtn
             // 
-            this.DeleteUserBtn.Location = new System.Drawing.Point(220, 378);
+            this.DeleteUserBtn.Location = new System.Drawing.Point(12, 460);
             this.DeleteUserBtn.Name = "DeleteUserBtn";
             this.DeleteUserBtn.Size = new System.Drawing.Size(160, 37);
             this.DeleteUserBtn.TabIndex = 13;
@@ -182,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 427);
+            this.ClientSize = new System.Drawing.Size(809, 519);
             this.Controls.Add(this.DeleteUserBtn);
             this.Controls.Add(this.DeleteWeightBtn);
             this.Controls.Add(this.WeightChart);
