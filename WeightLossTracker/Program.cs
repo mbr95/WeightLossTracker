@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeightLossTracker.Library;
 
 namespace WeightLossTracker
 {
@@ -16,7 +17,7 @@ namespace WeightLossTracker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Tracker());
+            Application.Run(new Tracker(new DataAccess()));
         }
     }
 }

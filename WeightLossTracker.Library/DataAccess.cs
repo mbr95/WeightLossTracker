@@ -12,7 +12,7 @@ using Npgsql.TypeMapping;
 
 namespace WeightLossTracker.Library
 {
-    public class DataAccess
+    public class DataAccess : IDataAccess
     {
         public List<User> GetAllUsers()
         {

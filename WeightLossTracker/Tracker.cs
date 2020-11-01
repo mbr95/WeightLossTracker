@@ -14,12 +14,15 @@ namespace WeightLossTracker
 {
     public partial class Tracker : Form
     {
-        DataAccess dataBase = new DataAccess();
+        private IDataAccess _dataBase { get; set; }
+
         List<User> users = new List<User>();
 
-        public Tracker()
+        public Tracker(IDataAccess dataBase)
         {
             InitializeComponent();
+
+            _dataBase = dataBase;
 
             UpdateUsersBox();
             UpdateWeightChart();
@@ -27,7 +30,7 @@ namespace WeightLossTracker
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
-            dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
+            _dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
 
             UpdateUsersBox();
         }
@@ -43,13 +46,13 @@ namespace WeightLossTracker
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;
 
-            if(dataBase.DateExists(date, userId))
+            if(_dataBase.DateExists(date, userId))
             {
-                dataBase.UpdateWeight(value, date, userId);
+                _dataBase.UpdateWeight(value, date, userId);
             } 
             else
             {
-                dataBase.AddWeight(value, date, userId);
+                _dataBase.AddWeight(value, date, userId);
             }
 
             UpdateWeightChart();
@@ -62,7 +65,7 @@ namespace WeightLossTracker
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;
 
-            dataBase.DeleteWeight(date, userId);
+            _dataBase.DeleteWeight(date, userId);
             UpdateWeightChart();
         }
 
@@ -71,13 +74,13 @@ namespace WeightLossTracker
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;
 
-            dataBase.DeleteUser(userId);
+            _dataBase.DeleteUser(userId);
             UpdateUsersBox();
         }
 
         private void UpdateUsersBox() 
         {
-            users = dataBase.GetAllUsers();
+            users = _dataBase.GetAllUsers();
             UsersListBox.DataSource = users;
             UsersListBox.DisplayMember = "FullInfo";
         }
@@ -91,7 +94,7 @@ namespace WeightLossTracker
             User selectedUser = (User)UsersListBox.SelectedItem;
             int userId = selectedUser.Id;
 
-            List<Weight> weights = dataBase.GetAllWeights(userId);
+            List<Weight> weights = _dataBase.GetAllWeights(userId);
             List<Weight> weightsOrderedByValue = weights.OrderBy(e => e.Value).ToList();
             int minWeight = (int)weightsOrderedByValue.First().Value - 1;
             int maxWeight = (int)weightsOrderedByValue.Last().Value + 1;
