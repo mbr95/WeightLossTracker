@@ -20,9 +20,8 @@ namespace WeightLossTracker
 
         public Tracker(IDataAccess dataBase)
         {
-            InitializeComponent();
-
             _dataBase = dataBase;
+            InitializeComponent();            
 
             UpdateUsersBox();
             UpdateWeightChart();
@@ -30,19 +29,32 @@ namespace WeightLossTracker
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
+            if (!FormValidator.FirstNameValidation(FirstNameBox.Text))
+            {
+                errorProvider1.SetError(FirstNameBox, "Invalid first name.");
+                return;
+            }
+            if (!FormValidator.LastNameValidation(LastNameBox.Text))
+            {
+                errorProvider1.SetError(LastNameBox, "Invalid last name.");
+                return;
+            }
+
             _dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
 
             UpdateUsersBox();
         }
 
-
-
         private void UpdateWeightBtn_Click(object sender, EventArgs e)
         {
+            if (!FormValidator.WeightValidation(WeightValueBox.Text))
+            {
+                errorProvider1.SetError(WeightValueBox, "Invalid weight.");
+                return;
+            }
+
             float value = float.Parse(WeightValueBox.Text);
-
             DateTime date = dateTimePicker.Value;
-
             int userId = UpdateSelectedUserIndex();
 
             if (_dataBase.DateExists(date, userId))
@@ -53,14 +65,13 @@ namespace WeightLossTracker
             {
                 _dataBase.AddWeight(value, date, userId);
             }
-
+            
             UpdateWeightChart();
         }
 
         private void DeleteWeightBtn_Click(object sender, EventArgs e)
         {
             DateTime date = dateTimePicker.Value;
-
             int userId = UpdateSelectedUserIndex();
 
             _dataBase.DeleteWeight(date, userId);
@@ -82,16 +93,6 @@ namespace WeightLossTracker
             UsersListBox.DisplayMember = "FullInfo";
         }
 
-
-
-        private int UpdateSelectedUserIndex()
-        {
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
-
-            return userId;
-        }
-
         private void UsersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateWeightChart();
@@ -99,16 +100,33 @@ namespace WeightLossTracker
 
         private void UpdateWeightChart()
         {
-            string seriesName = "Weight";
-            int userId = UpdateSelectedUserIndex();
-            List<Weight> weights = _dataBase.GetAllWeights(userId);
+            try
+            {
+                string seriesName = "Weight";
+                int userId = UpdateSelectedUserIndex();
+                List<Weight> weights = _dataBase.GetAllWeights(userId);
 
-            int[] minMaxAxisYValues = GetMinMaxAxisYValues(weights);
-            DateTime[] minMaxAxisXValues = GetMinMaxAxisXValues(weights);
+                int[] minMaxAxisYValues = GetMinMaxAxisYValues(weights);
+                DateTime[] minMaxAxisXValues = GetMinMaxAxisXValues(weights);
 
-            UpdateChartSeries(seriesName);
-            UpdateAxises(minMaxAxisYValues, minMaxAxisXValues);
-            AddPointsToSeries(weights, seriesName);
+                UpdateChartSeries(seriesName);
+                UpdateAxises(minMaxAxisYValues, minMaxAxisXValues);
+                AddPointsToSeries(weights, seriesName);
+            }
+            catch
+            {
+                WeightChart.Series.Clear();
+                errorProvider1.SetError(WeightChart, "User has no weight recorded.");
+            }
+            
+        }
+
+        private int UpdateSelectedUserIndex()
+        {
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            return userId;
         }
 
         private void UpdateChartSeries(string seriesName)

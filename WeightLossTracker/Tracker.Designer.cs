@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -45,7 +46,9 @@
             this.WeightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DeleteWeightBtn = new System.Windows.Forms.Button();
             this.DeleteUserBtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.WeightChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // UsersListBox
@@ -178,6 +181,10 @@
             this.DeleteUserBtn.UseVisualStyleBackColor = true;
             this.DeleteUserBtn.Click += new System.EventHandler(this.DeleteUserBtn_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Tracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -202,6 +209,7 @@
             this.Name = "Tracker";
             this.Text = "Weight loss tracker";
             ((System.ComponentModel.ISupportInitialize)(this.WeightChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +231,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart WeightChart;
         private System.Windows.Forms.Button DeleteWeightBtn;
         private System.Windows.Forms.Button DeleteUserBtn;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
