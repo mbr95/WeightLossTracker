@@ -43,10 +43,9 @@ namespace WeightLossTracker
 
             DateTime date = dateTimePicker.Value;
 
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
+            int userId = UpdateSelectedUserIndex();
 
-            if(_dataBase.DateExists(date, userId))
+            if (_dataBase.DateExists(date, userId))
             {
                 _dataBase.UpdateWeight(value, date, userId);
             } 
@@ -62,8 +61,7 @@ namespace WeightLossTracker
         {
             DateTime date = dateTimePicker.Value;
 
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
+            int userId = UpdateSelectedUserIndex();
 
             _dataBase.DeleteWeight(date, userId);
             UpdateWeightChart();
@@ -71,8 +69,7 @@ namespace WeightLossTracker
 
         private void DeleteUserBtn_Click(object sender, EventArgs e)
         {
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
+            int userId = UpdateSelectedUserIndex();
 
             _dataBase.DeleteUser(userId);
             UpdateUsersBox();
@@ -91,8 +88,7 @@ namespace WeightLossTracker
             WeightChart.Series.Add("Weight");
             WeightChart.Series["Weight"].ChartType = SeriesChartType.Point;
 
-            User selectedUser = (User)UsersListBox.SelectedItem;
-            int userId = selectedUser.Id;
+            int userId = UpdateSelectedUserIndex();
 
             List<Weight> weights = _dataBase.GetAllWeights(userId);
             List<Weight> weightsOrderedByValue = weights.OrderBy(e => e.Value).ToList();
@@ -113,6 +109,14 @@ namespace WeightLossTracker
             {
                 WeightChart.Series["Weight"].Points.AddXY(weight.Date, weight.Value);
             }
+        }
+
+        private int UpdateSelectedUserIndex()
+        {
+            User selectedUser = (User)UsersListBox.SelectedItem;
+            int userId = selectedUser.Id;
+
+            return userId;
         }
 
         private void UsersListBox_SelectedIndexChanged(object sender, EventArgs e)
