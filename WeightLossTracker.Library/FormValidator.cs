@@ -11,7 +11,7 @@ namespace WeightLossTracker.Library
     {
         public static bool FirstNameValidation(string firstName)
         {
-            string validFirstName = @"^[A-Z][a-z]{1,24}$";
+            string validFirstName = @"^[\p{Lu}][\p{Ll}]{1,24}$";
             bool isValid = Regex.IsMatch(firstName, validFirstName);
 
             return isValid;
@@ -19,7 +19,7 @@ namespace WeightLossTracker.Library
 
         public static bool LastNameValidation(string lastName)
         {
-            string validLastName = @"^[A-Z][a-z]{0,24}$";
+            string validLastName = @"^[\p{Lu}][\p{Ll}]{0,24}$";
             bool isValid = Regex.IsMatch(lastName, validLastName);
 
             return isValid;
@@ -27,7 +27,7 @@ namespace WeightLossTracker.Library
 
         public static bool WeightValidation(string weight)
         {
-            string validWeight = @"^\d{1,3}(,\d*)?$";
+            string validWeight = @"^\d{0,2}[1-9](,\d*)?$";
             bool isValid = Regex.IsMatch(weight, validWeight);
 
             return isValid;

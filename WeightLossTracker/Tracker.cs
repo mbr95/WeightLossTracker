@@ -31,17 +31,28 @@ namespace WeightLossTracker
         {
             if (!FormValidator.FirstNameValidation(FirstNameBox.Text))
             {
-                errorProvider1.SetError(FirstNameBox, "Invalid first name.");
+                string invalidMessage = "Invalid first name.\nValid first name contains:" +
+                    "\n-letters only\n-one uppercase letter at the beginnig" +
+                    "\n-at least one lowercase letter\n-max 25 letters";
+
+                errorProvider1.SetError(FirstNameBox, invalidMessage);
                 return;
             }
             if (!FormValidator.LastNameValidation(LastNameBox.Text))
             {
-                errorProvider1.SetError(LastNameBox, "Invalid last name.");
+                string invalidMessage = "Invalid last name.\nValid last name contains:" +
+                    "\n-letters only\n-one uppercase letter at the beginnig\n-max 25 letters";
+
+                errorProvider1.SetError(LastNameBox, invalidMessage);
                 return;
             }
+          
+            errorProvider1.Clear();
 
             _dataBase.AddUser(FirstNameBox.Text, LastNameBox.Text);
 
+            FirstNameBox.Clear();
+            LastNameBox.Clear();
             UpdateUsersBox();
         }
 
@@ -49,9 +60,13 @@ namespace WeightLossTracker
         {
             if (!FormValidator.WeightValidation(WeightValueBox.Text))
             {
-                errorProvider1.SetError(WeightValueBox, "Invalid weight.");
+                string invalidMessage = "Invalid weight.\nMake sure weight is in range:\n1 - 999,(9).";
+
+                errorProvider1.SetError(WeightValueBox, invalidMessage);
                 return;
             }
+            
+            errorProvider1.Clear();
 
             float value = float.Parse(WeightValueBox.Text);
             DateTime date = dateTimePicker.Value;
@@ -65,16 +80,8 @@ namespace WeightLossTracker
             {
                 _dataBase.AddWeight(value, date, userId);
             }
-            
-            UpdateWeightChart();
-        }
 
-        private void DeleteWeightBtn_Click(object sender, EventArgs e)
-        {
-            DateTime date = dateTimePicker.Value;
-            int userId = UpdateSelectedUserIndex();
-
-            _dataBase.DeleteWeight(date, userId);
+            WeightValueBox.Clear();
             UpdateWeightChart();
         }
 
@@ -86,6 +93,16 @@ namespace WeightLossTracker
             UpdateUsersBox();
         }
 
+        private void DeleteWeightBtn_Click(object sender, EventArgs e)
+        {
+            DateTime date = dateTimePicker.Value;
+            int userId = UpdateSelectedUserIndex();
+
+            _dataBase.DeleteWeight(date, userId);
+            UpdateWeightChart();
+        }
+       
+
         private void UpdateUsersBox()
         {
             users = _dataBase.GetAllUsers();
@@ -95,6 +112,7 @@ namespace WeightLossTracker
 
         private void UsersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             UpdateWeightChart();
         }
 
@@ -117,8 +135,7 @@ namespace WeightLossTracker
             {
                 WeightChart.Series.Clear();
                 errorProvider1.SetError(WeightChart, "User has no weight recorded.");
-            }
-            
+            }          
         }
 
         private int UpdateSelectedUserIndex()
